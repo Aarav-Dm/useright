@@ -1,0 +1,38 @@
+[
+  {
+    "for": "transcribe",
+    "response": {
+      "lines": [
+        {
+          "speaker": "client",
+          "text": "Hi Imani! The Morning Pour shot has been doing great on our Instagram."
+        },
+        {
+          "speaker": "creator",
+          "text": "So glad to hear it! What are you planning next?"
+        },
+        {
+          "speaker": "client",
+          "text": "We're refreshing the spring menu next month. We'd also like to use it on our printed menus and in-store posters. Same US stores, nothing else changes. Can you send something over this week?"
+        }
+      ]
+    }
+  },
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "print",
+          "quote": "We'd also like to use it on our printed menus and in-store posters."
+        },
+        {
+          "optionId": "US",
+          "quote": "Same US stores, nothing else changes."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

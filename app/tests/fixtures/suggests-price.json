@@ -1,0 +1,23 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "web",
+          "quote": "We'd like the Harbor Light image for our web site, US only, for 6 months."
+        },
+        {
+          "optionId": "US",
+          "quote": "We'd like the Harbor Light image for our web site, US only, for 6 months."
+        },
+        {
+          "optionId": "6mo",
+          "quote": "We'd like the Harbor Light image for our web site, US only, for 6 months."
+        }
+      ],
+      "suggestedPriceCents": 5000,
+      "clarifyingQuestion": null
+    }
+  }
+]

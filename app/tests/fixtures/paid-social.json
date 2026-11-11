@@ -1,0 +1,23 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "social",
+          "quote": "We'd like to boost the Harbor Light post on Instagram as paid ads in the US for six months."
+        },
+        {
+          "optionId": "US",
+          "quote": "We'd like to boost the Harbor Light post on Instagram as paid ads in the US for six months."
+        },
+        {
+          "optionId": "6mo",
+          "quote": "We'd like to boost the Harbor Light post on Instagram as paid ads in the US for six months."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

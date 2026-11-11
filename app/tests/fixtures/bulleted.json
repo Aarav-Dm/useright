@@ -1,0 +1,27 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "social",
+          "quote": "Instagram and Facebook posts"
+        },
+        {
+          "optionId": "web",
+          "quote": "- The homepage of our website"
+        },
+        {
+          "optionId": "US",
+          "quote": "United States only, for 6 months"
+        },
+        {
+          "optionId": "6mo",
+          "quote": "United States only, for 6 months"
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

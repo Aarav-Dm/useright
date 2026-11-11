@@ -1,0 +1,19 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "web",
+          "quote": "Please add our website as well."
+        },
+        {
+          "optionId": "billboard",
+          "quote": "We also want the photo on a billboard on I-95."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

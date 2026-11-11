@@ -1,0 +1,15 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "web",
+          "quote": "We'd like to run the Morning Pour photo on our website in the UK and Australia too."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

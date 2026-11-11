@@ -1,0 +1,168 @@
+/* Client surfaces (/c, /pay, /r): dark cinematic glass. Palette: docs/superpowers/specs/2026-11-02-dark-cinematic-look.md. */
+
+.theme-glass {
+  --g-bg: #060607;
+  --g-bg-2: #0d0d10;
+  --g-accent: #e6b873;
+  --g-text: #f3f0ea;
+  --g-muted: #9b968d;
+  --g-line: rgba(255, 255, 255, 0.09);
+  --g-glass: rgba(255, 255, 255, 0.045);
+  --g-glass-strong: rgba(255, 255, 255, 0.08);
+  --g-danger: #f08a7e;
+  --g-ok: #7fd1a8; --g-warn: #e9c46a;
+  --ring: var(--g-accent); /* focus ring: the base green is ~2.4:1 on this background */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--g-bg);
+  color: var(--g-text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.theme-glass ::selection { background: rgba(230, 184, 115, 0.35); color: #fff; }
+
+.g-display { font-family: var(--font-instrument-serif), Georgia, serif; font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; }
+.g-mono { font-family: var(--font-geist-mono), ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.g-muted { color: var(--g-muted); }
+.g-gradient-text {
+  background: linear-gradient(100deg, #fbf8f2 20%, #d8cfc0 60%, #9b968d 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* Word-by-word reveals split the text into spans; each span carries the gradient itself. */
+.g-gradient-text > span { background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Background: one warm spotlight from above, edge vignette, film grain. Fixed, behind everything. */
+.g-backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% -10%, rgba(255, 236, 210, 0.10), transparent 70%); }
+.g-backdrop::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.65)); }
+.g-grain {
+  position: absolute; inset: 0; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Glass card: light from above (brighter top edge). */
+.g-card {
+  background: var(--g-glass);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid var(--g-line);
+  border-top-color: rgba(255, 255, 255, 0.16);
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+/* Buttons. Press 0.97 (160ms), shine sweep on hover, arrow slides. Magnetic pull is JS (magnetic.tsx). */
+.g-btn {
+  --pad: 0 22px;
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 48px; padding: var(--pad); border-radius: 999px; overflow: hidden;
+  font-weight: 500; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap; cursor: pointer;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.g-btn:active:not(:disabled) { transform: scale(0.97); }
+.g-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.g-btn:focus-visible { outline: 2px solid var(--g-accent); outline-offset: 3px; }
+.g-btn-primary {
+  color: #060607;
+  background: var(--g-text);
+  box-shadow: 0 10px 30px -12px rgba(255, 236, 210, 0.35);
+}
+.g-btn-primary::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+}
+.g-btn-ghost { color: var(--g-text); background: var(--g-glass); border: 1px solid var(--g-line); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.g-btn-sm { height: 38px; font-size: 14px; --pad: 0 16px; }
+.g-btn .g-arrow { transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .g-btn-primary:hover { box-shadow: 0 14px 40px -10px rgba(255, 236, 210, 0.5); }
+  .g-btn-primary:hover::after { transform: translateX(120%); transition: transform 700ms var(--ease-out); }
+  .g-btn-ghost:hover { border-color: rgba(255, 255, 255, 0.28); background: var(--g-glass-strong); }
+  .g-btn:hover .g-arrow { transform: translateX(4px); }
+}
+
+/* Chips with a sliding active pill (pill is a motion layoutId). */
+.g-chip {
+  position: relative; height: 34px; padding: 0 14px; border-radius: 999px; font-size: 13px; color: var(--g-muted);
+  transition: color 150ms ease, transform 160ms var(--ease-out); cursor: pointer;
+}
+.g-chip:active { transform: scale(0.97); }
+.g-chip[aria-pressed='true'] { color: #fff; }
+.g-chip:focus-visible { outline: 2px solid var(--g-accent); outline-offset: 2px; }
+.g-chip-pill { position: absolute; inset: 0; border-radius: 999px; background: var(--g-glass-strong); border: 1px solid rgba(255, 255, 255, 0.2); z-index: -1; }
+
+.g-input {
+  width: 100%; height: 46px; padding: 0 14px; border-radius: 12px; color: var(--g-text);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--g-line);
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+textarea.g-input { height: auto; min-height: 104px; padding: 12px 14px; resize: vertical; }
+.g-input::placeholder { color: var(--g-muted); } /* full muted: 75% failed 4.5:1 (review C2) */
+.g-input:focus { outline: none; border-color: rgba(230, 184, 115, 0.7); box-shadow: 0 0 0 4px rgba(230, 184, 115, 0.15); background: rgba(255, 255, 255, 0.06); }
+.g-input[aria-invalid='true'] { border-color: var(--g-danger); }
+
+.g-live-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--g-accent); }
+.g-live-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--g-accent); animation: g-pulse 1.8s ease-out infinite; }
+@keyframes g-scrollhint { from { transform: translateY(-100%); } to { transform: translateY(200%); } }
+@keyframes g-pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(3.5); opacity: 0; } }
+
+/* Hero pin: CSS owns the height so server and client agree whatever the motion setting. */
+.g-hero { height: 100vh; }
+.g-hero-hint { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .g-hero { height: 260vh; }
+  .g-hero-hint { display: flex; }
+}
+/* Visible pause toggle stops every CSS loop. */
+.theme-glass.g-paused *, .theme-glass.g-paused *::before, .theme-glass.g-paused *::after { animation-play-state: paused !important; }
+.theme-glass.g-paused .g-hero-hint { display: none; }
+
+/* Grid tile: tilt + glare follow the cursor (vars set on the tile itself). */
+.g-tile { position: relative; display: block; width: 100%; border-radius: 16px; overflow: hidden; transform-style: preserve-3d; cursor: zoom-in; background: var(--g-bg-2); }
+.g-tile img { display: block; width: 100%; height: auto; transition: transform 600ms var(--ease-out), filter 400ms ease; }
+.g-tile-glare { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 200ms ease; background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.22), transparent 45%); }
+.g-tile-caption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.85)); transform: translateY(100%); transition: transform 220ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .g-tile:hover .g-tile-glare { opacity: 1; }
+  .g-tile:hover .g-tile-caption { transform: translateY(0); }
+  .g-tile:hover img { transform: scale(1.04); }
+}
+.g-tile:focus-visible { outline: 2px solid var(--g-accent); outline-offset: 3px; }
+.g-tile:focus-visible .g-tile-caption { transform: translateY(0); }
+
+/* Globe stage */
+.g-globe-tile { position: absolute; left: 0; top: 0; border-radius: 10px; overflow: hidden; will-change: transform, opacity; backface-visibility: hidden; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7); }
+.g-globe-tile img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .g-live-dot::after { animation: none; }
+  .g-btn-primary::after { display: none; }
+  .g-tile img, .g-tile-caption { transition: opacity 150ms ease; }
+  /* No CSS movement: hover lifts, presses and nav resizes jump instead of travelling. */
+  .theme-glass *, .theme-glass *::before, .theme-glass *::after { transition-property: opacity, color, background-color, border-color !important; }
+}
+
+@media print {
+  .theme-glass { background: #fff; color: #000; }
+  .theme-glass .g-backdrop { display: none; }
+  .theme-glass .g-card { background: #fff; border-color: #ddd; box-shadow: none; backdrop-filter: none; }
+  .theme-glass .g-muted { color: #555; }
+  .theme-glass * { color: #000 !important; }
+}
+
+/* One-shot page entrance and check-mark draw (pay, receipt). */
+.g-rise { animation: g-rise 600ms var(--ease-out) both; }
+.g-draw { stroke-dasharray: 12; animation: g-draw 400ms var(--ease-out) 200ms both; }
+@keyframes g-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes g-draw { from { stroke-dashoffset: 12; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .g-rise { animation: g-fade 150ms ease both; } .g-draw { animation: none; } }
+/* B16: with motion paused, a rise must not freeze at its hidden first frame. */
+.theme-glass.g-paused .g-rise { animation: none; }
+@keyframes g-fade { from { opacity: 0; } to { opacity: 1; } }

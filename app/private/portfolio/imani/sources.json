@@ -1,0 +1,221 @@
+{
+  "description": "Where each demo photo came from. Kept out of public/, so the served manifest does not point at a full-size copy (security review finding 2).",
+  "photos": [
+    {
+      "num": "01",
+      "filename": "01.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/yC-Yzbqy7PY",
+      "downloadUrl": "https://picsum.photos/id/0/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "02",
+      "filename": "02.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/LNRyGwIJr5c",
+      "downloadUrl": "https://picsum.photos/id/1/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "03",
+      "filename": "03.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/8yqds_91OLw",
+      "downloadUrl": "https://picsum.photos/id/23/952/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "04",
+      "filename": "04.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/N7XodRrbzS0",
+      "downloadUrl": "https://picsum.photos/id/2/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "05",
+      "filename": "05.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/Dl6jeyfihLk",
+      "downloadUrl": "https://picsum.photos/id/3/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "06",
+      "filename": "06.jpg",
+      "photographer": "How-Soon Ngu",
+      "sourceUrl": "https://unsplash.com/photos/7Vz3DtQDT3Q",
+      "downloadUrl": "https://picsum.photos/id/31/797/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "07",
+      "filename": "07.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/y83Je1OC6Wc",
+      "downloadUrl": "https://picsum.photos/id/4/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "08",
+      "filename": "08.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/LF8gK8-HGSg",
+      "downloadUrl": "https://picsum.photos/id/5/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "09",
+      "filename": "09.jpg",
+      "photographer": "Shane Colella",
+      "sourceUrl": "https://unsplash.com/photos/znM0ujn2RUA",
+      "downloadUrl": "https://picsum.photos/id/35/914/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "10",
+      "filename": "10.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/tAKXap853rY",
+      "downloadUrl": "https://picsum.photos/id/6/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "11",
+      "filename": "11.jpg",
+      "photographer": "Annie Spratt",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coffee_from_a_steel_kettle_(Unsplash).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Coffee_from_a_steel_kettle_%28Unsplash%29.jpg",
+      "licence": "CC0 1.0 Universal Public Domain Dedication (no conditions)",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "num": "12",
+      "filename": "12.jpg",
+      "photographer": "Nicholas Swanson",
+      "sourceUrl": "https://unsplash.com/photos/SyBYM8R6VU4",
+      "downloadUrl": "https://picsum.photos/id/57/900/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "13",
+      "filename": "13.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/xII7efH1G6o",
+      "downloadUrl": "https://picsum.photos/id/8/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "14",
+      "filename": "14.jpg",
+      "photographer": "Alejandro Escamilla",
+      "sourceUrl": "https://unsplash.com/photos/ABDTiLqDhJA",
+      "downloadUrl": "https://picsum.photos/id/9/1200/785.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "15",
+      "filename": "15.jpg",
+      "photographer": "Rula Sibai",
+      "sourceUrl": "https://unsplash.com/photos/QbkGwv3xtmQ",
+      "downloadUrl": "https://picsum.photos/id/67/797/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "16",
+      "filename": "16.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/6J--NXulQCs",
+      "downloadUrl": "https://picsum.photos/id/10/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "17",
+      "filename": "17.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/Cm7oKel-X2Q",
+      "downloadUrl": "https://picsum.photos/id/11/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "18",
+      "filename": "18.jpg",
+      "photographer": "Jassy Onyae",
+      "sourceUrl": "https://unsplash.com/photos/1gBUXhf0PtA",
+      "downloadUrl": "https://picsum.photos/id/75/800/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "19",
+      "filename": "19.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/I_9ILwtsl_k",
+      "downloadUrl": "https://picsum.photos/id/12/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "20",
+      "filename": "20.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/3MtiSMdnoCo",
+      "downloadUrl": "https://picsum.photos/id/13/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "21",
+      "filename": "21.jpg",
+      "photographer": "Paul Evans",
+      "sourceUrl": "https://unsplash.com/photos/CtkDsu4w-Rs",
+      "downloadUrl": "https://picsum.photos/id/78/800/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "22",
+      "filename": "22.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/IQ1kOQTJrOQ",
+      "downloadUrl": "https://picsum.photos/id/14/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "23",
+      "filename": "23.jpg",
+      "photographer": "Paul Jarvis",
+      "sourceUrl": "https://unsplash.com/photos/NYDo21ssGao",
+      "downloadUrl": "https://picsum.photos/id/15/1200/800.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    },
+    {
+      "num": "24",
+      "filename": "24.jpg",
+      "photographer": "Dorothy Lin",
+      "sourceUrl": "https://unsplash.com/photos/TIr6EwYMRUM",
+      "downloadUrl": "https://picsum.photos/id/79/797/1200.jpg",
+      "licence": "Unsplash License (Free commercial and non-commercial use, no attribution required)",
+      "licenceUrl": "https://unsplash.com/license"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+# B10 10.1: the hosted demo. Names only: every sync:false value is typed into Render, never committed. See README.md.
+# Connect this Blueprint to the public repo's default branch: the daily tick workflow must live there too, or it never runs.
+services:
+  - type: web
+    name: useright
+    runtime: node
+    plan: free # sleeps when idle, so the uptime monitor on /healthz matters; see README.md
+    rootDir: app
+    # Dev dependencies are needed to build (TypeScript, Tailwind).
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: DEMO_MODE
+        value: "1"
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: MY_CLIENT_ID
+        sync: false
+      - key: MY_PAYPAL_SECRET
+        sync: false
+      - key: PAYPAL_WEBHOOK_ID
+        sync: false
+      - key: APP_SECRET
+        sync: false
+      - key: CREATOR_TOKEN
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: APP_ORIGIN
+        sync: false

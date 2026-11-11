@@ -1,0 +1,22 @@
+# B10 10.4: the daily renewal and expiry tick. Needs repository secrets TICK_URL (the full /api/cron/tick URL) and
+# CRON_SECRET. Stops by itself after Dec 15, when the demo no longer has to stay live.
+name: Daily tick
+on:
+  schedule:
+    - cron: '17 13 * * *'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: POST the tick
+        env:
+          TICK_URL: ${{ secrets.TICK_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ "$(date -u +%Y%m%d)" -gt 20261215 ]; then echo "past Dec 15, nothing to do"; exit 0; fi
+          # A sleeping free host can take a minute to wake, so wait and retry before failing the run.
+          curl --fail --silent --show-error --max-time 120 --retry 3 --retry-delay 30 --retry-all-errors \
+            -X POST "$TICK_URL" -H "x-cron-secret: $CRON_SECRET"

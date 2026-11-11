@@ -1,0 +1,451 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/*
+ * Design tokens (docs/ui/README.md). One place for colour, type, spacing, radius, elevation and motion.
+ * Dashboard: :root (light) and .dark. Client surfaces: .theme-client (ink / paper / clay), photos never inverted.
+ * Contrast is a proposal per the README; measure before calling a page done.
+ */
+
+@custom-variant dark (&:is(.dark *, .dark));
+
+:root {
+  /* fonts come from next/font in app/layout.tsx; these are the fallbacks */
+  --app-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --app-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --app-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+
+  /* dashboard, light */
+  --background: oklch(0.98 0.005 155);
+  --foreground: oklch(0.21 0.012 155);
+  --card: oklch(0.995 0.003 155);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.995 0.003 155);
+  --popover-foreground: var(--foreground);
+  --sidebar: oklch(0.95 0.008 155);
+  --sidebar-foreground: var(--foreground);
+  --muted: oklch(0.95 0.008 155);
+  --muted-foreground: oklch(0.43 0.015 155);
+  --secondary: oklch(0.95 0.008 155);
+  --secondary-foreground: var(--foreground);
+  --primary: oklch(0.34 0.055 155);
+  --primary-foreground: oklch(0.985 0.005 155);
+  --accent: oklch(0.91 0.018 155);
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.83 0.012 155);
+  --input: oklch(0.83 0.012 155);
+  --ring: oklch(0.4 0.07 155);
+  --highlight: oklch(0.92 0.13 95);
+  --highlight-foreground: oklch(0.22 0.02 95);
+  --row-hover: oklch(0.95 0.008 155);
+  --added: oklch(0.39 0.07 245);
+  --warning: oklch(0.43 0.1 75);
+  --warning-bg: oklch(0.96 0.04 85);
+  --destructive: oklch(0.45 0.16 28);
+  --destructive-bg: oklch(0.97 0.015 28);
+  --success: oklch(0.35 0.08 155);
+  --success-bg: oklch(0.95 0.03 155);
+
+  --shadow-popover-color: rgb(12 30 25 / 0.12);
+
+  /* type sizes that change at the 768px breakpoint (README Typography) */
+  --fs-body: 1rem;
+  --lh-body: 1.5rem;
+  --fs-label: 0.875rem;
+  --lh-label: 1.25rem;
+  --lh-meta: 1.125rem;
+  --fs-c-display: 2.5rem;
+  --lh-c-display: 2.75rem;
+  --fs-c-title: 1.75rem;
+  --lh-c-title: 2.125rem;
+  --fs-c-price: 2rem;
+  --lh-c-price: 2.375rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-body: 0.9375rem;
+    --lh-body: 1.5rem;
+    --fs-label: 0.8125rem;
+    --lh-label: 1.125rem;
+    --lh-meta: 1rem;
+    --fs-c-display: 4rem;
+    --lh-c-display: 4.25rem;
+    --fs-c-title: 2rem;
+    --lh-c-title: 2.375rem;
+    --fs-c-price: 2.5rem;
+    --lh-c-price: 2.75rem;
+  }
+}
+
+/* dashboard, dark (opt-in with the .dark class; the dashboard's scene is a daylight laptop) */
+.dark {
+  --background: oklch(0.18 0.008 155);
+  --foreground: oklch(0.95 0.006 155);
+  --card: oklch(0.23 0.01 155);
+  --popover: oklch(0.23 0.01 155);
+  --sidebar: oklch(0.25 0.012 155);
+  --muted: oklch(0.25 0.012 155);
+  --muted-foreground: oklch(0.77 0.015 155);
+  --secondary: oklch(0.25 0.012 155);
+  --primary: oklch(0.8 0.07 155);
+  --primary-foreground: oklch(0.18 0.01 155);
+  --accent: oklch(0.31 0.025 155);
+  --border: oklch(0.43 0.015 155);
+  --input: oklch(0.43 0.015 155);
+  --ring: oklch(0.84 0.07 155);
+  --highlight: oklch(0.48 0.07 95);
+  --highlight-foreground: oklch(0.98 0.025 95);
+  --added: oklch(0.82 0.07 245);
+  --warning: oklch(0.86 0.1 85);
+  --warning-bg: oklch(0.28 0.035 75);
+  --destructive: oklch(0.82 0.1 28);
+  --destructive-bg: oklch(0.27 0.045 28);
+  --success: oklch(0.82 0.09 155);
+  --success-bg: oklch(0.27 0.03 155);
+  --shadow-popover-color: rgb(0 0 0 / 0.35);
+}
+
+/* client surfaces: portfolio, pay, receipt */
+.theme-client {
+  --app-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --app-mono: var(--font-jetbrains-mono), ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --c-ink: oklch(0.17 0.02 275);
+  --c-paper: oklch(0.975 0.01 85);
+  --c-text: oklch(0.3 0.01 275);
+  --c-muted: oklch(0.43 0.015 275);
+  --c-clay: oklch(0.52 0.16 38);
+  --c-on-clay: oklch(0.99 0.005 85);
+  --c-line: oklch(0.84 0.01 85);
+  --c-focus: oklch(0.45 0.15 38);
+  --c-success: oklch(0.35 0.08 155);
+  --c-warning: oklch(0.43 0.1 75);
+  --c-error: oklch(0.45 0.16 28);
+  /* on the ink hero: paper text and the brighter clay */
+  --c-on-ink: oklch(0.975 0.01 85);
+  --c-clay-on-ink: oklch(0.77 0.11 45);
+
+  --background: var(--c-paper);
+  --foreground: var(--c-text);
+  --card: var(--c-paper);
+  --card-foreground: var(--c-text);
+  --popover: var(--c-paper);
+  --popover-foreground: var(--c-text);
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: var(--c-muted);
+  --secondary: oklch(0.94 0.01 85);
+  --secondary-foreground: var(--c-text);
+  --accent: oklch(0.93 0.015 85);
+  --accent-foreground: var(--c-text);
+  --primary: var(--c-clay);
+  --primary-foreground: var(--c-on-clay);
+  --border: var(--c-line);
+  --input: var(--c-line);
+  --ring: var(--c-focus);
+  --success: var(--c-success);
+  --warning: var(--c-warning);
+  --destructive: var(--c-error);
+}
+
+.theme-client.dark,
+.dark .theme-client {
+  --c-paper: oklch(0.21 0.015 275);
+  --c-text: oklch(0.96 0.01 85);
+  --c-muted: oklch(0.77 0.015 85);
+  --c-clay: oklch(0.77 0.11 45);
+  --c-on-clay: oklch(0.19 0.02 38);
+  --c-line: oklch(0.44 0.015 275);
+  --c-focus: oklch(0.84 0.1 45);
+  --c-success: oklch(0.82 0.09 155);
+  --c-warning: oklch(0.86 0.1 85);
+  --c-error: oklch(0.82 0.1 28);
+  --muted: oklch(0.25 0.015 275);
+  --secondary: oklch(0.25 0.015 275);
+  --accent: oklch(0.28 0.015 275);
+}
+
+@theme inline {
+  --font-sans: var(--app-sans);
+  --font-mono: var(--app-mono);
+  --font-display: var(--app-display);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-bg: var(--destructive-bg);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-row-hover: var(--row-hover);
+  --color-added: var(--added);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+
+  --color-c-ink: var(--c-ink);
+  --color-c-paper: var(--c-paper);
+  --color-c-text: var(--c-text);
+  --color-c-muted: var(--c-muted);
+  --color-c-clay: var(--c-clay);
+  --color-c-on-clay: var(--c-on-clay);
+  --color-c-line: var(--c-line);
+  --color-c-focus: var(--c-focus);
+  --color-c-on-ink: var(--c-on-ink);
+  --color-c-clay-on-ink: var(--c-clay-on-ink);
+
+  /* radius-sm/md/lg = 4/6/10px */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.625rem;
+
+  --shadow-popover: 0 4px 16px var(--shadow-popover-color);
+  --shadow-photo: 0 8px 24px rgb(15 20 30 / 0.18);
+
+  /* type roles: text-d-page, text-d-section, text-body, text-label, text-meta, text-money, text-id,
+     text-c-display, text-c-title, text-c-body, text-c-price, text-c-id */
+  --text-d-page: 1.5rem;
+  --text-d-page--line-height: 1.75rem;
+  --text-d-page--font-weight: 600;
+  --text-d-page--letter-spacing: -0.02em;
+  --text-d-section: 1.125rem;
+  --text-d-section--line-height: 1.5rem;
+  --text-d-section--font-weight: 600;
+  --text-d-section--letter-spacing: -0.01em;
+  --text-body: var(--fs-body);
+  --text-body--line-height: var(--lh-body);
+  --text-label: var(--fs-label);
+  --text-label--line-height: var(--lh-label);
+  --text-label--font-weight: 500;
+  --text-meta: 0.75rem;
+  --text-meta--line-height: var(--lh-meta);
+  --text-meta--letter-spacing: 0.01em;
+  --text-money: 1.5rem;
+  --text-money--line-height: 1.75rem;
+  --text-money--font-weight: 500;
+  --text-id: 0.75rem;
+  --text-id--line-height: 1.125rem;
+  --text-c-display: var(--fs-c-display);
+  --text-c-display--line-height: var(--lh-c-display);
+  --text-c-display--font-weight: 500;
+  --text-c-display--letter-spacing: -0.025em;
+  --text-c-title: var(--fs-c-title);
+  --text-c-title--line-height: var(--lh-c-title);
+  --text-c-title--font-weight: 500;
+  --text-c-title--letter-spacing: -0.015em;
+  --text-c-body: 1rem;
+  --text-c-body--line-height: 1.5rem;
+  --text-c-price: var(--fs-c-price);
+  --text-c-price--line-height: var(--lh-c-price);
+  --text-c-price--font-weight: 600;
+  --text-c-id: 0.75rem;
+  --text-c-id--line-height: 1.125rem;
+
+  /* motion: m-feedback / m-result / m-disclose share one curve */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  /* font-family is inherited as a computed value, so each scope re-applies its own sans */
+  .theme-client,
+  .theme-dashboard {
+    font-family: var(--app-sans);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .text-money,
+  .text-c-price,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Reduced motion: state changes become instant on every surface except review's scroll-linked globe, which checks
+   the preference itself. */
+@media (prefers-reduced-motion: reduce) {
+  .theme-dashboard,
+  .theme-dashboard *,
+  .theme-dashboard *::before,
+  .theme-dashboard *::after,
+  :root:has(.theme-dashboard) *,
+  :root:has(.theme-dashboard) *::before,
+  :root:has(.theme-dashboard) *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --border: oklch(0.6 0.015 155);
+    --input: oklch(0.55 0.015 155);
+  }
+}
+
+/*
+ * Dashboard: dark cinematic look (docs/superpowers/specs/2026-11-02-dark-cinematic-look.md, "Dashboard rules").
+ * One override of the shadcn tokens on .theme-dashboard (creator pages + login), so every page follows with no
+ * logic change. Replaces the indigo draft from 0ad495e. No indigo, violet or blue; one warm amber accent.
+ * Contrast (computed, WCAG, layers composited): text 17.8:1; muted 6.9:1 on bg, 6.4:1 on glass; muted on a hovered or
+ * selected table row (white 6%) under the brightest point of the spotlight 4.8:1 (glass-strong 8% would be 4.5:1, so rows
+ * use 6%); amber ring 11:1; ok/warn/danger on their 10% tints 9.4:1 or better; field borders 3.3:1 (white 36%); near-black
+ * text on the danger fill 8.3:1.
+ */
+/* Tokens also apply to the document root while a dashboard page is open, so portalled menus, selects and sheets
+   (rendered under <body>, outside the wrapper) get the same look. */
+:root:has(.theme-dashboard),
+.theme-dashboard {
+  color-scheme: dark;
+  /* B16: flat Vercel-style ground; cards one tone step up, split by a quiet 1px line */
+  --dash-bg: #0a0a0a;
+  --dash-bg-2: #111112;
+  --dash-glass: rgba(255, 255, 255, 0.025);
+  --dash-glass-strong: rgba(255, 255, 255, 0.07);
+  --dash-line: rgba(255, 255, 255, 0.08);
+  --dash-text: #f3f0ea;
+  --dash-muted: #9b968d;
+  --dash-accent: #e6b873;
+
+  --background: var(--dash-bg);
+  --foreground: var(--dash-text);
+  --card: var(--dash-glass);
+  --card-foreground: var(--dash-text);
+  --popover: var(--dash-bg-2);
+  --popover-foreground: var(--dash-text);
+  --sidebar: var(--dash-bg-2);
+  --sidebar-foreground: var(--dash-text);
+  --muted: var(--dash-glass);
+  --muted-foreground: var(--dash-muted);
+  --secondary: var(--dash-glass-strong);
+  --secondary-foreground: var(--dash-text);
+  /* the one main action per view: off-white button, near-black text */
+  --primary: var(--dash-text);
+  --primary-foreground: var(--dash-bg);
+  /* hover and selection layer = glass-strong */
+  --accent: var(--dash-glass-strong);
+  --accent-foreground: var(--dash-text);
+  --row-hover: rgba(255, 255, 255, 0.06);
+  --border: var(--dash-line);
+  --input: rgba(255, 255, 255, 0.36);
+  --ring: var(--dash-accent);
+  /* client sentence: amber at 18% behind off-white text */
+  --highlight: rgba(230, 184, 115, 0.18);
+  --highlight-foreground: var(--dash-text);
+  --added: var(--dash-text);
+  --warning: #e9c46a;
+  --warning-bg: rgba(233, 196, 106, 0.1);
+  --destructive: #f08a7e;
+  --destructive-bg: rgba(240, 138, 126, 0.1);
+  --success: #7fd1a8;
+  --success-bg: rgba(127, 209, 168, 0.1);
+  --shadow-popover-color: rgb(0 0 0 / 0.6);
+}
+
+/* the dashboard canvas: the app shell wrapper and the sign-in page. B16: flat ground, no spotlight, vignette or
+   grain (design-taste-frontend app rules: no gradients or decoration on the ground). */
+.dash-canvas {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--dash-bg);
+}
+
+/* raised surfaces: mobile bar, sheets, dialogs, the sign-in panel. B16: opaque, no blur, so nothing shows through. */
+.dash-glass {
+  background: var(--dash-bg-2);
+}
+@media (prefers-contrast: more) {
+  :root:has(.theme-dashboard), .theme-dashboard { --border: rgba(255, 255, 255, 0.3); }
+}
+
+/* B16: page titles in Geist, weight and tracking carry them (one family, as Vercel); money in Geist tabular, mono
+   is kept for ids only. */
+.theme-dashboard .text-d-page {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.theme-dashboard .text-money,
+.theme-dashboard .font-mono.tabular {
+  font-family: var(--app-sans);
+  letter-spacing: -0.01em;
+}
+/* the one figure a view leads with */
+.theme-dashboard .text-lead {
+  font-family: var(--app-sans);
+  font-size: 2rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.theme-dashboard .text-d-section {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+/* quiet list rows that open something (Linear-style): a tone step on hover, pointer devices only */
+.theme-dashboard .row-link { transition: background-color 150ms cubic-bezier(0.23, 1, 0.32, 1); }
+@media (hover: hover) and (pointer: fine) {
+  .theme-dashboard .row-link:hover { background-color: var(--row-hover); }
+}
+
+/* press feedback on buttons and nav links only (not checkboxes, radios or select triggers). In a layer, so a
+   transition or duration utility on a button still wins. */
+@layer components {
+  .theme-dashboard :is([data-slot='button'], [data-press]) {
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .theme-dashboard :is([data-slot='button'], [data-press]):active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+/* page content fades and rises 8px when a page mounts (once, 200ms); runs without JavaScript */
+@keyframes dash-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes dash-enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.dash-enter { animation: dash-enter 200ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+
+/* Reduced motion on the dashboard: fades only. No rise, no press scale, no spin. */
+@media (prefers-reduced-motion: reduce) {
+  .theme-dashboard .dash-enter { animation: dash-enter-fade 200ms ease-out both !important; }
+  .theme-dashboard :is([data-slot='button'], [data-press]):active:not(:disabled) { transform: none; }
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "billboard",
+          "quote": "We want to put the Morning Pour photo on a billboard on I-95 for the next six months."
+        },
+        {
+          "optionId": "6mo",
+          "quote": "We want to put the Morning Pour photo on a billboard on I-95 for the next six months."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

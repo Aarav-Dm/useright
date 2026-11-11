@@ -1,0 +1,31 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "web",
+          "quote": "Can we use the Harbor Light photo on our website in the US for six months?"
+        },
+        {
+          "optionId": "US",
+          "quote": "Can we use the Harbor Light photo on our website in the US for six months?"
+        },
+        {
+          "optionId": "6mo",
+          "quote": "Can we use the Harbor Light photo on our website in the US for six months?"
+        },
+        {
+          "optionId": "print",
+          "quote": "We would also like to use it in print ads."
+        },
+        {
+          "optionId": "radio",
+          "quote": "Can we use the Harbor Light photo on our website in the US for six months?"
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

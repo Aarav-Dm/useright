@@ -1,0 +1,10 @@
+[
+  {
+    "for": "transcribe",
+    "response": "I cannot read this image."
+  },
+  {
+    "for": "transcribe",
+    "response": "{\"lines\": \"unreadable\"}"
+  }
+]

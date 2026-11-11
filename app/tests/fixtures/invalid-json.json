@@ -1,0 +1,10 @@
+[
+  {
+    "for": "extract",
+    "response": "Sure! Here are the uses: social, web"
+  },
+  {
+    "for": "extract",
+    "response": "```json\n{\"uses\": \"social\"}\n```"
+  }
+]

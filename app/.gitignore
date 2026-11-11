@@ -1,0 +1,8 @@
+node_modules/
+.next/
+.pglite/
+.uploads/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+!.env.example

@@ -1,0 +1,23 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "social",
+          "quote": "We need the Morning Pour photo for social in the US for 6 months."
+        },
+        {
+          "optionId": "US",
+          "quote": "We need the Morning Pour photo for social in the US for 6 months."
+        },
+        {
+          "optionId": "6mo",
+          "quote": "We need the Morning Pour photo for social in the US for 6 months."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]

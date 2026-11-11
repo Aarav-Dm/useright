@@ -1,0 +1,10 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": "Which channels will the new campaign run on, and for how long?"
+    }
+  }
+]

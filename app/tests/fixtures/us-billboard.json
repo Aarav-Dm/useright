@@ -1,0 +1,23 @@
+[
+  {
+    "for": "extract",
+    "response": {
+      "uses": [
+        {
+          "optionId": "billboard",
+          "quote": "We want a U.S. billboard for the Morning Pour photo, e.g. on I-95, for six months."
+        },
+        {
+          "optionId": "US",
+          "quote": "We want a U.S. billboard for the Morning Pour photo, e.g. on I-95, for six months."
+        },
+        {
+          "optionId": "6mo",
+          "quote": "We want a U.S. billboard for the Morning Pour photo, e.g. on I-95, for six months."
+        }
+      ],
+      "suggestedPriceCents": null,
+      "clarifyingQuestion": null
+    }
+  }
+]
