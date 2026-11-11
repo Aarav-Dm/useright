@@ -56,6 +56,14 @@ export async function openPostgres(url: string, opts: { searchPath?: string; max
   // prepare:false keeps it working through Supabase's transaction-mode pooler (port 6543).
   const sql = postgres(url, {
     prepare: false, max: opts.max ?? 5, onnotice: () => {},
+    // Writers already encode JSON for PGlite; do not encode those strings a second time.
+    types: {
+      jsonb: {
+        to: 3802, from: [3802],
+        serialize: (value: unknown) => typeof value === 'string' ? value : JSON.stringify(value),
+        parse: JSON.parse,
+      },
+    },
     ...(opts.searchPath ? { connection: { search_path: opts.searchPath } } : {}),
   });
   const queryable = (s: Sql | TransactionSql): Queryable => ({
