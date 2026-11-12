@@ -1,5 +1,5 @@
 // Files for the seeded assets. B9 9.1: an asset with a portfolio photo is sold as that photo: print is the private
-// original, web is 800px, the preview is watermarked, and /c/imani shows a smaller copy (db/public-photos.mjs). Any
+// original (2400px), web is 2000px, the preview is watermarked, and /c/imani shows a 1600px copy (db/public-photos.mjs). Any
 // other seeded asset gets placeholder PNGs (gradients, the preview with diagonal stripes).
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -67,14 +67,14 @@ const photoBytes = (title: string): Buffer | null => {
 
 /**
  * The file a web or print licence delivers for the asset at position `i`; the seeds hash these for their receipts (F9).
- * A photo's print file is its private original and its web file is the same image at 800px; /c/imani shows 600px.
- * ponytail: the stock originals top out near 1200px, so "print" is only the largest file we have. A creator's real
+ * A photo's print file is its private original and its web file is the same image at 2000px; /c/imani shows 1600px.
+ * shortcut: the stock originals are kept at 2400px, so "print" is only the largest file we keep; a creator's real
  * upload would give a true print-resolution file.
  */
 export const printFile = async (title: string, i: number) => photoBytes(title) ?? placeholderPng(3000, 2000, i);
 export const webFile = async (title: string, i: number) => {
   const photo = photoBytes(title);
-  return photo ? sharp(photo).resize(800, 800, { fit: 'inside' }).jpeg({ quality: 85 }).toBuffer() : placeholderPng(1200, 800, i);
+  return photo ? sharp(photo).resize(2000, 2000, { fit: 'inside' }).jpeg({ quality: 85 }).toBuffer() : placeholderPng(1200, 800, i);
 };
 
 /** B9 9.1: the photo at preview size under pale diagonal bands, so the client sees the image they are buying. */

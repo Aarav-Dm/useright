@@ -65,9 +65,9 @@ describe('B9 9.1: one consistent demo asset', () => {
       const web = (await readAsset(dir, k.key_web))!;
       expect(served).not.toContain(sha256Bytes(web));
       const shown = readFileSync(join(process.cwd(), 'public', 'portfolio', 'imani', p.filename));
-      expect(await longEdge(shown)).toBe(600);
-      expect(await longEdge(web)).toBe(800);
-      expect(await longEdge(print)).toBeGreaterThan(800);
+      expect(await longEdge(shown)).toBe(1600);
+      expect(await longEdge(web)).toBe(2000);
+      expect(await longEdge(print)).toBeGreaterThan(2000);
     }
   });
 
@@ -98,7 +98,7 @@ describe('B9 9.1: one consistent demo asset', () => {
     const k = await keys('Morning Pour');
     expect((await readAsset(dir, k.key_print))!.equals(photo)).toBe(true);
     const web = (await readAsset(dir, k.key_web))!;
-    expect(await longEdge(web)).toBe(800);
+    expect(await longEdge(web)).toBe(2000);
     expect(await distance(web, photo)).toBeLessThan(5);
   });
 
