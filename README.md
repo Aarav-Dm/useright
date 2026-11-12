@@ -53,6 +53,8 @@ Names only; keep all values private. `app/lib/` contains validation and defaults
 
 ## Deploy on Render
 
+On the repository default branch, `.github/workflows/keep-warm.yml` pings the free Render instance every 10 minutes to keep it awake until judging ends on December 15, 2026.
+
 1. Connect the public repository using the root `render.yaml` Blueprint. Set its branch to the branch you publish.
 2. The service uses `rootDir: app`, build `npm ci --include=dev && npm run build`, and start `npm run start`. Health check: `/healthz`.
 3. Enter every `sync: false` secret in Render. Use PostgreSQL and a private Supabase Storage bucket; local disk is not durable on the free service. Never expose the service-role key to the browser.

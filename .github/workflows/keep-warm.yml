@@ -1,0 +1,16 @@
+# Keep the public demo responsive during judging; stop requests after December 15.
+name: Keep warm
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  keep-warm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Wake the demo
+        run: |
+          if [ "$(date -u +%Y%m%d)" -gt 20261215 ]; then echo "past Dec 15, nothing to do"; exit 0; fi
+          curl -fsS --max-time 90 --retry 1 --retry-delay 5 --retry-all-errors https://useright.onrender.com/healthz || true
