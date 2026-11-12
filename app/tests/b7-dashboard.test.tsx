@@ -7,6 +7,7 @@ import type { BriefView } from '../lib/briefs';
 import type { DealRow } from '../lib/deals';
 import type { AskAlert, AskItem, LedgerRow } from '../lib/ledger';
 import type { SettingsView } from '../lib/settings';
+import { OPEN_REQUEST_EVENT } from '@/components/creator/request-sheet';
 
 const router = { replace: vi.fn(), push: vi.fn(), refresh: vi.fn() };
 vi.mock('next/navigation', () => ({ useRouter: () => router, usePathname: () => '/deals', useSearchParams: () => new URLSearchParams() }));
@@ -67,7 +68,12 @@ describe('Deals', () => {
     expect(screen.getByText('Demo')).toBeTruthy();
     expect(screen.queryByText('Paid, file unlocked')).toBeNull();
     expect(screen.getByText('Paid')).toBeTruthy(); // the Due column says what happened, not a stale $0.00
-    expect(screen.getByRole('link', { name: 'Add a request' }).getAttribute('href')).toBe('/dev/intake');
+    expect(screen.queryByRole('link', { name: 'Add a request' })).toBeNull(); // B18: never the /dev/intake test page
+    const opened = vi.fn();
+    window.addEventListener(OPEN_REQUEST_EVENT, opened);
+    fireEvent.click(screen.getByRole('button', { name: 'Add a request' }));
+    window.removeEventListener(OPEN_REQUEST_EVENT, opened);
+    expect(opened).toHaveBeenCalledTimes(1);
   });
 
   it('an initial load error offers Try again, which loads the rows', async () => {

@@ -1,11 +1,11 @@
 'use client';
 // /deals (batch-4 §2, docs/ui/deals.md): fetches GET /api/deals and hands the rows to DealsTable.
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { DealsTable } from '@/components/creator/deals-table';
 import { STATUS_MEANING } from '@/components/creator/explain';
 import { DEALS_LOADED_MAX, dealsNextSteps, HelpPanel, NextStepBanner } from '@/components/creator/guide';
+import { OPEN_REQUEST_EVENT } from '@/components/creator/request-sheet';
 import { EmptyState, LoadError, LoadingRows, PageHeader } from '@/components/creator/page-bits';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -44,9 +44,10 @@ export default function DealsPage() {
   }, [router]);
   useEffect(() => { void load(); }, [load]);
 
+  // B18: opens the dashboard's request sheet (the toolbar's RequestSheet listens), never the /dev/intake test page.
   const add = (
-    <Button asChild className="h-11 md:h-10">
-      <Link href="/dev/intake">Add a request</Link>
+    <Button type="button" className="h-11 md:h-10" onClick={() => window.dispatchEvent(new Event(OPEN_REQUEST_EVENT))}>
+      Add a request
     </Button>
   );
 
