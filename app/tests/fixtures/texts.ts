@@ -8,7 +8,7 @@ export const DEMO_DM: Transcript = {
     { speaker: 'creator', text: 'So glad to hear it! What are you planning next?' },
     {
       speaker: 'client',
-      text: "We're refreshing the spring menu next month. We'd also like to use it on our printed menus and in-store posters. Same US stores, nothing else changes. Can you send something over this week?",
+      text: "We're refreshing the spring menu next month. We'd also like to use it on our printed menus and in-store posters. Same US stores, same six months as our current licence, nothing else changes. Can you send something over this week?",
     },
   ],
 };

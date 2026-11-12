@@ -14,7 +14,7 @@ const fixtures: Record<string, Entry[]> = {
     { for: 'transcribe', response: T.DEMO_DM },
     ex([
       ['print', T.DEMO_DM_PRINT_SENTENCE],
-      ['US', 'Same US stores, nothing else changes.'],
+      ['US', 'Same US stores, same six months as our current licence, nothing else changes.'],
     ]),
   ],
   paste: [ex([

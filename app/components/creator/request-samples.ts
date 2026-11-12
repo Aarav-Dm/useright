@@ -25,7 +25,7 @@ export const SAMPLES: Sample[] = [
     text: [
       'client: Hi Imani! The Morning Pour shot has been doing great on our Instagram.',
       'creator: So glad to hear it! What are you planning next?',
-      "client: We're refreshing the spring menu next month. We'd also like to use it on our printed menus and in-store posters. Same US stores, nothing else changes. Can you send something over this week?",
+      "client: We're refreshing the spring menu next month. We'd also like to use it on our printed menus and in-store posters. Same US stores, same six months as our current licence, nothing else changes. Can you send something over this week?",
     ].join('\n'),
     clientEmail: 'buying@northwind.example', assetTitle: 'Morning Pour',
   },
