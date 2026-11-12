@@ -169,7 +169,9 @@ export function GlobeHero({ name, photos, stats, onOpen, onRequest }: Props) {
         el.style.width = `${cellW}px`;
         el.style.height = `${cellH}px`;
         el.style.transform = `translate3d(${tx}px, ${ty}px, ${tz}px) rotateY(${lerp(ry, 0, t)}deg) rotateX(${lerp(rx, 0, t)}deg) scale(${s})`;
-        el.style.opacity = String(lerp(0.32 + 0.68 * front, 1, t));
+        // B18: a tile near the globe's rim (poles and sides) is seen edge-on as a thin hard line; fade it out there.
+        const rim = clamp01((Math.abs(z2) - 0.22) / 0.23);
+        el.style.opacity = String(lerp((0.32 + 0.68 * front) * rim, 1, t));
         el.style.zIndex = String(Math.round(lerp(front * 100, 100, t)));
         el.style.pointerEvents = t > 0.95 || front > 0.75 ? 'auto' : 'none';
       }
@@ -300,7 +302,7 @@ export function GlobeHero({ name, photos, stats, onOpen, onRequest }: Props) {
                 style={{ opacity: 0 }}
                 onClick={() => onOpen(i)}
               >
-                <Image src={p.src} alt="" width={p.width} height={p.height} sizes="(max-width: 640px) 120px, 240px"
+                <Image src={p.src} alt="" width={p.width} height={p.height} sizes="(max-width: 640px) 160px, 320px"
                   quality={70} placeholder={p.blurDataUrl ? 'blur' : 'empty'} blurDataURL={p.blurDataUrl} priority={i < 8} />
               </button>
             ))}
