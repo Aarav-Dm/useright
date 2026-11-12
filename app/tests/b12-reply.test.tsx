@@ -94,7 +94,7 @@ describe('item 1: reply draft', () => {
     expect(room).toContain('Reply draft');
     expect(room).toContain('Copy reply');
     expect(room).toContain('The app sends nothing');
-    expect(room).toContain('break-words');
+    expect(room).toContain('[overflow-wrap:anywhere]');
     expect(room).toContain('leading-relaxed');
     expect(room).not.toContain('(below the price and rules)');
     expect(room).not.toContain('(below)');

@@ -152,8 +152,9 @@ function RuleStrip({ policy }: { policy: NonNullable<NonNullable<BriefView['vers
 
 function Section({ title, id, children, className = '', focusable = false, tip }: { title: string; id: string; children: ReactNode; className?: string; focusable?: boolean; tip?: TermKey }) {
   return (
-    <section aria-labelledby={id} className={`grid content-start ${className}`}>
-      <Card className="gap-4 p-5 shadow-none">
+  // B18: min-w-0 lets a card shrink to its column; without it a long unbroken line (the pay link) widened the left column over the right one.
+    <section aria-labelledby={id} className={`grid min-w-0 content-start ${className}`}>
+      <Card className="min-w-0 gap-4 p-5 shadow-none">
       <CardHeader className="flex items-center gap-2 px-0 py-0">
         <h2 id={id} tabIndex={focusable ? -1 : undefined} className="text-d-section outline-none">{title}</h2>
         {tip && <TermTip term={tip} />}
@@ -318,7 +319,7 @@ export function DealRoomView({ view, options, busy, actions, verifyLink = null, 
         {draft && (
           <Section title="Reply draft" id="reply-title">
             <p className="max-w-prose text-label text-muted-foreground">Written by code from the client’s sentences, your rate card and the pay link. The app sends nothing: copy it into your own reply.</p>
-            <pre className="rounded-md bg-muted p-4 font-sans text-body text-[13px] leading-relaxed break-words whitespace-pre-wrap">{draft}</pre>
+            <pre className="rounded-md bg-muted p-4 font-sans text-body text-[13px] leading-relaxed [overflow-wrap:anywhere] whitespace-pre-wrap">{draft}</pre>
             <Button variant="outline" className="w-fit" onClick={() => actions.onCopy(draft)}>Copy reply</Button>
           </Section>
         )}
