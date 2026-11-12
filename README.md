@@ -47,7 +47,7 @@ Names only; keep all values private. `app/lib/` contains validation and defaults
 | `PUBLIC_BASE_URL`, `APP_ORIGIN` | Public absolute app origin; use HTTPS when hosted |
 | `CRON_SECRET` | Private daily-tick authorization secret |
 | `DEMO_MODE` | `1` enables the demo clock and seeded demo controls |
-| `AI_PROVIDER`, `GEMINI_API_KEY`, `AI_MODEL` | `gemini` for hosted extraction; local default is `fixture` |
+| `AI_PROVIDER`, `GEMINI_API_KEY`, `AI_MODEL` | `gemini` for hosted extraction (default model `gemini-flash-latest`); local default is `fixture` |
 | `AI_API_KEY`, `AI_MODEL`, `AI_BASE_URL` | Optional alternative model provider; select `AI_PROVIDER=openai_compat` |
 | `NEXT_PUBLIC_DEVPOST_URL` | Optional public submission link; leave empty until available |
 

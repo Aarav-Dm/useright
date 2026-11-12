@@ -30,7 +30,7 @@ export interface AiAdapter {
 
 // ---------- providers ----------
 
-export function geminiProvider(apiKey: string, model = 'gemini-2.5-flash', fetchImpl: typeof fetch = fetch): Provider {
+export function geminiProvider(apiKey: string, model = 'gemini-flash-latest', fetchImpl: typeof fetch = fetch): Provider {
   return {
     model,
     async complete({ system, user, image }) {
@@ -159,7 +159,7 @@ export function adapterFromEnv(env: NodeJS.ProcessEnv = process.env, fixture?: s
   }
   if (provider === 'gemini') {
     if (!env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not set');
-    return createAdapter(geminiProvider(env.GEMINI_API_KEY, env.AI_MODEL || 'gemini-2.5-flash'));
+    return createAdapter(geminiProvider(env.GEMINI_API_KEY, env.AI_MODEL || 'gemini-flash-latest'));
   }
   if (provider === 'openai_compat') {
     if (!env.AI_BASE_URL || !env.AI_API_KEY || !env.AI_MODEL) throw new Error('AI_BASE_URL, AI_API_KEY and AI_MODEL must be set');
