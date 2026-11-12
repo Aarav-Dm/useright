@@ -217,7 +217,7 @@ export function DealRoomView({ view, options, busy, actions, verifyLink = null, 
         {TITLE[status] ?? 'Why this needs you'}
       </h2>
       <ul className="grid gap-1 text-body">
-        {reasons.map((r) => <li key={r}>{reasonText(r)}{!paidUse && <> <code className="font-mono text-id text-muted-foreground">{r}</code></>}</li>)}
+        {reasons.map((r) => <li key={r}>{reasonText(r)}</li>)}
       </ul>
       {paidUse && <p className="text-body font-medium">{PAID_USE_REFUSAL}</p>}
       {status === 'awaiting_verification' && actions.onIssueVerifyLink && (
@@ -300,7 +300,7 @@ export function DealRoomView({ view, options, busy, actions, verifyLink = null, 
         <Section title="Noted (you reviewed these)" id="notes-title">
           <p className="text-body text-muted-foreground">These would normally stop the deal. You edited the uses yourself, so they do not.</p>
           <ul className="grid gap-1 text-body text-muted-foreground">
-            {view.notes.map((n) => <li key={n}>{describeReason(n)} <code className="font-mono text-id">{n}</code></li>)}
+            {view.notes.map((n) => <li key={n}>{describeReason(n)}</li>)}
           </ul>
         </Section>
       )}
